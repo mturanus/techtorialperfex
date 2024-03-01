@@ -23,14 +23,17 @@ public class DriverHelper {
             switch (browser){
 
                 case "chrome":
-                    String hubURL = "http://35.174.174.118:4444";
-                    ChromeOptions options = new ChromeOptions();
-                    try {
-                        driver = new RemoteWebDriver(new URL(hubURL),options);
-                    } catch (MalformedURLException e) {
-                        throw new RuntimeException(e);
-                    }
+//                    String hubURL = "http://35.174.174.118:4444";
+//                    ChromeOptions options = new ChromeOptions();
+//                    try {
+//                        driver = new RemoteWebDriver(new URL(hubURL),options);
+//                    } catch (MalformedURLException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                    break;
+                    driver = new ChromeDriver();
                     break;
+
                 case "firefox":
                     driver = new FirefoxDriver();
                     break;
