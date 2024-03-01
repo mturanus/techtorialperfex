@@ -2,7 +2,7 @@ Feature: Testing the Login Functionality of Techtorial Work Website
 
   Background: Verify title and visibility of log_in
     Given User verifies the title is 'Techtorial CRM - Login'
-    When User verifies log_in is visiable on the page
+    When User verifies log_in is visible on the page
 
   Scenario:Happy Path Login Functionality(Positive)
 

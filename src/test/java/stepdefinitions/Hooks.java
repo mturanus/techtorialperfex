@@ -4,11 +4,10 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
-import utils.BrowserUtils;
 import utils.ConfigReader;
 import utils.DriverHelper;
 
-public class WorkHook {
+public class Hooks {
     public WebDriver driver;
 
     @Before//it must be imported from io.cucumber not from JUNIT****
@@ -19,6 +18,7 @@ public class WorkHook {
 
     @After
     public void tearDown(Scenario scenario){
+        //
         driver.quit();
     }
 }
