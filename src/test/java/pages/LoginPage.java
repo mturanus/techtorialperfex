@@ -20,9 +20,11 @@ public class LoginPage {
     @FindBy(css = "button[type='submit']")
     private WebElement loginButton;
 
+
     public void login(String email, String password) {
         this.email.sendKeys(email);
         this.password.sendKeys(password);
         loginButton.click();
+        System.out.println("login method"); 
     }
 }
