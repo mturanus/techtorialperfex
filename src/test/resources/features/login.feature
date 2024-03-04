@@ -7,7 +7,6 @@ Feature: Testing the Login Functionality of Techtorial Work Website
 
   Scenario:Happy Path Login Functionality(Positive)
 
-    When User provides correct employee email and password
-    And User clicks login button
+    When User provides correct employee email and password, and login
     Then User validates the title 'Dashboard' from MainPage
 
