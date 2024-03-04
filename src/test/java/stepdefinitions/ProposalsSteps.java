@@ -108,4 +108,18 @@ public class ProposalsSteps {
         mainPage.selectSalesModule(salesModule);
         Assert.assertEquals(status, proposalsPage.getStatus());
     }
-}
+
+    @Then("set Table length {string} from drop down menu")
+    public void set_table_length_from_drop_down_menu(String value) {
+
+        proposalsPage.selectListLength(value);
+
+    }
+    @Then("from table verify that approved proposal status label is {string}")
+    public void from_table_verify_that_approved_proposal_status_label_is(String expectedValue) {
+        Assert.assertEquals(expectedValue, proposalsPage.getAcceptedText() );
+
+    }
+
+
+    }
