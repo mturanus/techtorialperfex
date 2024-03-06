@@ -12,7 +12,10 @@ Feature: Testing the Login Functionality of Techtorial Work Website
 
   Scenario: Negative Login Functionality(Incorrect email and password)
 #    Given User validates the title is 'Techtorial CRM - Login' from LoginPage
-#    And User validates the log_in is visible on the page
-    When User provides wrong credentials as "afhieuhf"  and "djendwnee" to the loginPage
-    Then User validates 'invalid email or password' and 'rgba(211, 0, 0, 1)' from loginPage
+
+#    And User validates the log_in is visible on the  page
+    When User provides wrong credentials as "afhieuhf@gmail.com"  and "djendwnee" to the loginPage
+    Then User validates 'Invalid email or password' and 'rgba(71, 85, 105, 1)' from loginPage
+
+
 
