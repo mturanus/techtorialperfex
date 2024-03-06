@@ -100,6 +100,10 @@ public class NewProposalPage {
     public void clickCheckButton(WebDriver driver) {
         Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(1));
         BrowserUtils.scrollIntoView(driver,checkButton);
+
+    public void clickCheckButton() {
+        Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(1));
+
         checkButton.click();
     }
 

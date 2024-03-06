@@ -22,7 +22,11 @@ public class ProposalsSteps {
 
     @Given("navigate to Techtorial CRM url")
     public void navigate_to_techtorial_crm_url() {
+
         driver.get(ConfigReader.readProperty("employee_url"));
+
+        driver.get(ConfigReader.readProperty("url"));
+
     }
 
     @When("Enter correct employee email and password")
@@ -73,7 +77,11 @@ public class ProposalsSteps {
 
     @When("There is a blue check button next to auto filled item. Click blue check button to add item")
     public void there_is_a_blue_check_button_next_to_auto_filled_item_click_blue_check_button_to_add_item() {
+
         newProposalPage.clickCheckButton(driver);
+
+        newProposalPage.clickCheckButton();
+
     }
 
     @When("Click Add Item button and select Ethernet Cable items from drop down list: {string}")
@@ -88,7 +96,11 @@ public class ProposalsSteps {
 
     @When("Click blue check button to add item")
     public void click_blue_check_button_to_add_item() {
+
         newProposalPage.clickCheckButton(driver);
+
+        newProposalPage.clickCheckButton();
+
     }
 
     @Then("Verify that Total is {string}")
@@ -108,4 +120,22 @@ public class ProposalsSteps {
         mainPage.selectSalesModule(salesModule);
         Assert.assertEquals(status, proposalsPage.getStatus());
     }
+
 }
+
+
+    @Then("set Table length {string} from drop down menu")
+    public void set_table_length_from_drop_down_menu(String value) {
+
+        proposalsPage.selectListLength(value);
+
+    }
+    @Then("from table verify that approved proposal status label is {string}")
+    public void from_table_verify_that_approved_proposal_status_label_is(String expectedValue) {
+        Assert.assertEquals(expectedValue, proposalsPage.getAcceptedText() );
+
+    }
+
+
+    }
+
