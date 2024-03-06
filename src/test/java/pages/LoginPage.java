@@ -1,9 +1,11 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.BrowserUtils;
 
 public class LoginPage {
 
@@ -20,21 +22,29 @@ public class LoginPage {
     @FindBy(css = "button[type='submit']")
     private WebElement loginButton;
 
+
+
     @FindBy(xpath = "//h1")
     WebElement loginHeader;
+
+    @FindBy(xpath = "//div[@id='alerts']")
+    WebElement errorMessage;
 
 
     public void login(String email, String password) {
         this.email.sendKeys(email);
         this.password.sendKeys(password);
         loginButton.click();
+
         System.out.println("login method"); 
     }
-
 
     public boolean isLoginVisible(){
         return loginHeader.isDisplayed();
     }
 
-
+    public void errorMessageAndColor(String expectedMessage, String expectedColor) {
+        Assert.assertEquals(expectedMessage, BrowserUtils.getText(this.errorMessage));
+        Assert.assertEquals(expectedColor, this.errorMessage.getCssValue("color"));
+    }
 }
