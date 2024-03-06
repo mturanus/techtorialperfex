@@ -19,30 +19,30 @@ public class LoginPage {
     @FindBy(id = "password")
     private WebElement password;
 
-        @FindBy(css = "button[type='submit']")
-        WebElement loginButton;
+    @FindBy(css = "button[type='submit']")
+    WebElement loginButton;
 
     @FindBy(xpath = "//h1")
     WebElement loginHeader;
 
-        @FindBy(xpath = "//p[@class='text-danger alert-validation']")
-        WebElement errorMessage;
+    @FindBy(xpath = "//p[@class='text-danger alert-validation']")
+    WebElement errorMessage;
 
 
     public void login(String email, String password) {
         this.email.sendKeys(email);
         this.password.sendKeys(password);
         loginButton.click();
-        System.out.println("login method"); 
+        System.out.println("login method");
     }
 
 
-    public boolean isLoginVisible(){
+    public boolean isLoginVisible() {
         return loginHeader.isDisplayed();
     }
 
-        public void errorMessageAndColor (String expectedMessage, String expectedColor){
-            Assert.assertEquals(expectedMessage, BrowserUtils.getText(this.errorMessage));
-            Assert.assertEquals(expectedColor, this.errorMessage.getCssValue("color"));
-        }
+    public void errorMessageAndColor(String expectedMessage, String expectedColor) {
+        Assert.assertEquals(expectedMessage, BrowserUtils.getText(this.errorMessage));
+        Assert.assertEquals(expectedColor, this.errorMessage.getCssValue("color"));
+    }
 }

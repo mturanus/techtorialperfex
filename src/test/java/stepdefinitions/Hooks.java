@@ -17,6 +17,6 @@ public class Hooks {
     @After
     public void tearDown(){
         // BrowserUtils.getScreenshot(driver, "techtorial-perfex");
-      //  driver.quit();
+        driver.quit();
     }
 }
