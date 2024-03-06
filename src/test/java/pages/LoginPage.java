@@ -20,23 +20,21 @@ public class LoginPage {
     @FindBy(css = "button[type='submit']")
     private WebElement loginButton;
 
-
-
     @FindBy(xpath = "//h1")
     WebElement loginHeader;
-
 
 
     public void login(String email, String password) {
         this.email.sendKeys(email);
         this.password.sendKeys(password);
         loginButton.click();
-
         System.out.println("login method"); 
     }
+
 
     public boolean isLoginVisible(){
         return loginHeader.isDisplayed();
     }
+
 
 }
