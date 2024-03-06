@@ -1,13 +1,12 @@
-package pages;
+package pages.customer;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
-
-    public LoginPage(WebDriver driver) {
+public class CustomerLoginPage {
+    public CustomerLoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
@@ -20,23 +19,10 @@ public class LoginPage {
     @FindBy(css = "button[type='submit']")
     private WebElement loginButton;
 
-
-
-    @FindBy(xpath = "//h1")
-    WebElement loginHeader;
-
-
-
-    public void login(String email, String password) {
+    public void customerLogin(String email, String password) {
         this.email.sendKeys(email);
         this.password.sendKeys(password);
         loginButton.click();
 
-        System.out.println("login method"); 
     }
-
-    public boolean isLoginVisible(){
-        return loginHeader.isDisplayed();
-    }
-
 }
