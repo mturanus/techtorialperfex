@@ -20,12 +20,12 @@ public class LoginPage {
     private WebElement password;
 
     @FindBy(css = "button[type='submit']")
-    WebElement loginButton;
+    private WebElement loginButton;
 
     @FindBy(xpath = "//h1")
     WebElement loginHeader;
 
-    @FindBy(xpath = "//p[@class='text-danger alert-validation']")
+    @FindBy(xpath = "//div[@id='alerts']")
     WebElement errorMessage;
 
 
@@ -36,8 +36,7 @@ public class LoginPage {
         System.out.println("login method");
     }
 
-
-    public boolean isLoginVisible() {
+    public boolean isLoginVisible(){
         return loginHeader.isDisplayed();
     }
 

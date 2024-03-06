@@ -4,9 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import utils.BrowserUtils;
+
 import org.openqa.selenium.support.ui.Select;
 import utils.BrowserUtils;
 import utils.DriverHelper;
+
 
 public class ProposalsPage {
 
@@ -19,6 +23,7 @@ public class ProposalsPage {
 
     @FindBy(xpath = "//span[contains(text(), 'Sent')]")
     private WebElement status;
+
 
     @FindBy(name = "DataTables_Table_0_length")
     private WebElement tableLength;
@@ -35,6 +40,7 @@ public class ProposalsPage {
         Select select=new Select(tableLength);
         select.selectByVisibleText(value);
     }
+
 
 
     public void clickNewProposal() {
