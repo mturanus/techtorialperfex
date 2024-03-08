@@ -18,4 +18,3 @@ Feature: Testing Proposals Functionality
     Then Verify that Total is "$300.30"
     And Click Save & Send button
     And Find created Proposal by clicking "Sales", "Proposals" and verify that its status is "Sent"
-
