@@ -1,5 +1,6 @@
 package pages.proposals;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,5 +44,12 @@ public class ProposalsPage {
 
     public String getStatus() {
         return BrowserUtils.getText(status);
+    }
+
+    public boolean btnIsVisible(){
+        return newProposalButton.isDisplayed();
+    }
+    public void validateColor(String expectedColor){
+        Assert.assertEquals(expectedColor, newProposalButton.getCssValue("background-color"));
     }
 }
