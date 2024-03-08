@@ -36,6 +36,29 @@ Feature: Validate Created Proposal As A Customer Functionality
     When Customer draws a signature in canvas and clicks Sign
     Then Customer validates status label "Accepted" with green background
 
+
+
+#TPX-10  -  Hacer
+  Scenario: Add comment to proposal and convert it to invoice
+    Given navigate to Techtorial CRM url
+    When Enter correct employee email and password
+    And Click "Sales" Module from left side navigation menu
+    And Click "Proposals" module
+    And Search proposal name "Alina_Proposal_Test_TC5" from search box which is on tha top of table right corner
+    Then Verify that listed proposal data
+      | proposalSubject           | proposalProjectName   | proposalStatus |
+      | Alina_Proposal_Test_TC5   | Apple Project         | Accepted       |
+    When Click associated proposal id from Proposal # column, and From new panel, click Comments tab
+    And Add comment as "{your first name}_Proposal_Test_TC5 is accepted for invoice", and Click Add Comment button.
+    And Verify that proposal comment added and that next to Comments tab there is "1" badge for total comment.
+    And Click Convert button, and Select Invoice button from drop down menu.
+    And Verify that customer is "Apple LLC" as default from form
+    And Scroll down page and click Save button.
+    And Verify that there is red "Unpaid" label next to record header.
+    Then Verify that record header that starts with "INV-" same number with Invoice Number section in the form
+
+
+
   Scenario: Delete last added proposal
     Given navigate to Techtorial CRM url
     When Enter correct employee email and password
