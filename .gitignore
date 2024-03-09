@@ -11,7 +11,6 @@ target/
 *.iws
 *.iml
 *.ipr
-.idea
 
 ### Eclipse ###
 .apt_generated
@@ -39,5 +38,4 @@ build/
 .DS_Store
 
 ### Custom ###
-.idea/
 configuration.properties
