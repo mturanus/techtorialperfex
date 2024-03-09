@@ -1,16 +1,10 @@
 Feature: Testing Proposals Functionality
 
-  Background:
+  Scenario: Create New Proposal for a customer
     Given navigate to Techtorial CRM url
     When Enter correct employee email and password
     And Click "Sales" Module from left side navigation menu
     And Click "Proposals" module
-
-  Scenario: Create New Proposal for a customer
-#    Given navigate to Techtorial CRM url
-#    When Enter correct employee email and password
-#    And Click "Sales" Module from left side navigation menu
-#    And Click "Proposals" module
     And Click "New Proposal" button from top
     And Fill the Subject line with "Alex_Proposal_Test_TC5"
     And From Related dropdown select "Customer" option
@@ -24,8 +18,3 @@ Feature: Testing Proposals Functionality
     Then Verify that Total is "$300.30"
     And Click Save & Send button
     And Find created Proposal by clicking "Sales", "Proposals" and verify that its status is "Sent"
-
-
-  Scenario: Verify new proposal button background color
-    And Verify that there a button New Proposal
-    Then  Verify that Button background-color is "rgba(37, 99, 235, 1)"

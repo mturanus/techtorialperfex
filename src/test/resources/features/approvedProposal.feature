@@ -10,9 +10,6 @@ Feature: Verify approved proposal as employee
     Then  from table verify that approved proposal status label is "Accepted"
 
 
-
-
-
   #navigate to url: Techtorial CRM - Login
   #
   #Enter correct employee email and password

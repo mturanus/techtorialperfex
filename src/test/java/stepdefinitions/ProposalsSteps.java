@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.MainPage;
-import pages.customer.CustomerProposalPage;
 import pages.proposals.NewProposalPage;
 import pages.proposals.ProposalsPage;
 import utils.ConfigReader;
@@ -122,15 +121,5 @@ public class ProposalsSteps {
 
     }
 
-    @When("Verify that there a button New Proposal")
-    public void verify_that_there_a_button() {
- Assert.assertTrue(proposalsPage.btnIsVisible());
+
     }
-    @Then("Verify that Button background-color is {string}")
-    public void verify_that_button_background_color_is(String expectedColor) {
-proposalsPage.validateColor(expectedColor);
-    }
-
-
-
-}

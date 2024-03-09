@@ -25,6 +25,7 @@ public class CustomerProposalPage {
     List<WebElement> rows;
     @FindBy(xpath="//h4[contains(text(),'PRO')]")
     WebElement h4;
+
     //public String proposalNumber;
     public String proposalID ;
 
