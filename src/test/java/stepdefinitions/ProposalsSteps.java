@@ -42,8 +42,8 @@ public class ProposalsSteps {
     }
 
     @When("Click {string} button from top")
-    public void click_button_from_top(String string) {
-        proposalsPage.clickNewProposal();
+    public void click_button_from_top(String string) throws InterruptedException {
+        proposalsPage.clickNewProposal(driver);
     }
 
     @When("Fill the Subject line with {string}")
@@ -73,7 +73,7 @@ public class ProposalsSteps {
 
     @When("There is a blue check button next to auto filled item. Click blue check button to add item")
     public void there_is_a_blue_check_button_next_to_auto_filled_item_click_blue_check_button_to_add_item() {
-        newProposalPage.clickCheckButton();
+        newProposalPage.clickCheckButton(driver);
     }
 
     @When("Click Add Item button and select Ethernet Cable items from drop down list: {string}")
@@ -88,7 +88,7 @@ public class ProposalsSteps {
 
     @When("Click blue check button to add item")
     public void click_blue_check_button_to_add_item() {
-        newProposalPage.clickCheckButton();
+        newProposalPage.clickCheckButton(driver);
     }
 
     @Then("Verify that Total is {string}")

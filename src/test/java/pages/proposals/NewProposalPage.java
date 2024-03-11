@@ -97,8 +97,9 @@ public class NewProposalPage {
         BrowserUtils.selectBy(addItemDropdown, item, "text");
     }
 
-    public void clickCheckButton() {
+    public void clickCheckButton(WebDriver driver) {
         Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(1));
+        BrowserUtils.scrollIntoView(driver,checkButton);
         checkButton.click();
     }
 
