@@ -37,14 +37,26 @@ public void proposalDataValidation(String pageTitle, String item1, String item2,
     Assert.assertEquals(BrowserUtils.getText(this.pageTitle),pageTitle);
     Assert.assertEquals(BrowserUtils.getText(allItems.get(0)),item1);
     Assert.assertEquals(BrowserUtils.getText(allItems.get(1)),item2);
+    try {
+        Thread.sleep(2000);
+    } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+    }
     Assert.assertEquals(BrowserUtils.getText(this.acceptBtn),acceptBtn);
 
 }
-public void clickAcceptSignBtn(){
+public void clickAcceptSignBtn(WebDriver driver){
     acceptBtn.click();
+    BrowserUtils.scrollIntoView(driver,signBtn);
     signBtn.click();
 }
-public void errorValidation(String errorMsg){
+public void errorValidation(String errorMsg, WebDriver driver){
+    try {
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+    }
+    BrowserUtils.scrollIntoView(driver,this.errorMsg);
     Assert.assertEquals(BrowserUtils.getText(this.errorMsg),errorMsg);
     Assert.assertEquals(this.errorMsg.getCssValue("color"),"rgba(239, 68, 68, 1)");
 

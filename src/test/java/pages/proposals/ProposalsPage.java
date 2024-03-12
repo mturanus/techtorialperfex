@@ -28,7 +28,6 @@ public class ProposalsPage {
     private WebElement acceptedText;
 
 
-    //////////////////////
 
     @FindBy(xpath="//input[@class='form-control input-sm']")
     WebElement searchProposalBox;
@@ -83,6 +82,11 @@ public class ProposalsPage {
 
 
     public String getAcceptedText(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return BrowserUtils.getText(acceptedText);
     }
 
@@ -93,7 +97,9 @@ public class ProposalsPage {
     }
 
 
-    public void clickNewProposal() {
+    public void clickNewProposal(WebDriver driver) throws InterruptedException {
+        Thread.sleep(1000);
+        BrowserUtils.scrollIntoView(driver,newProposalButton);
         this.newProposalButton.click();
     }
 

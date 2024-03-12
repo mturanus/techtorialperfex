@@ -77,12 +77,12 @@ public class CustomerProposalsSteps {
 
     @When("Customer clicks Accept and Sign buttons")
     public void customer_clicks_accept_and_buttons() {
-        customerIndividualProposalPage.clickAcceptSignBtn();
+        customerIndividualProposalPage.clickAcceptSignBtn(driver);
 
     }
     @Then("Customer validates red signature error message {string}")
     public void customer_validates_red_signature_error_message(String errorMsg) {
-        customerIndividualProposalPage.errorValidation(errorMsg);
+        customerIndividualProposalPage.errorValidation(errorMsg,driver);
 
     }
     @When("Customer draws a signature in canvas and clicks Sign")

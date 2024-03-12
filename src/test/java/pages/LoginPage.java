@@ -36,7 +36,7 @@ public class LoginPage {
         this.password.sendKeys(password);
         loginButton.click();
 
-        System.out.println("login method"); 
+       // System.out.println("login method");
     }
 
     public boolean isLoginVisible(){
