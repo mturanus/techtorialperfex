@@ -8,15 +8,15 @@ import utils.DriverHelper;
 public class Hooks {
 
     public WebDriver driver;
-
-    @Before
-    public void setup() {
-        driver = DriverHelper.getDriver();
-    }
-
-    @After
-    public void tearDown(){
-        // BrowserUtils.getScreenshot(driver, "techtorial-perfex");
-        driver.quit();
-    }
+//
+//    @Before
+//    public void setup() {
+//        driver = DriverHelper.getDriver();
+//    }
+//
+//    @After
+//    public void tearDown(){
+//        // BrowserUtils.getScreenshot(driver, "techtorial-perfex");
+//        driver.quit();
+//    }
 }

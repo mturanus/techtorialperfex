@@ -1,6 +1,7 @@
+@regression
 Feature: Verify approved proposal as employee
 
-
+  @TPX-5
   Scenario: Verify proposal status
     Given navigate to Techtorial CRM url
     When Enter correct employee email and password
