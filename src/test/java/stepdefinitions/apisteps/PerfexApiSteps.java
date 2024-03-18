@@ -29,7 +29,7 @@ public class PerfexApiSteps {
 
         switch (requestType){
             case "GET":
-                response=given().header("authtoken", ConfigReader.readProperty("apiToken")).when().get();
+                response=given().header("authtoken", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWlrZS1hcGkiLCJuYW1lIjoiTWlrZSBUZWNodG9yaWFsIiwiQVBJX1RJTUUiOjE3MTAwNjE0ODB9.16BVdzs3Ssxf3yurelqxe2v754sTkiUPJAzFYibVHoc").when().get();
                 System.out.println(response.toString());
                 break;
         }
