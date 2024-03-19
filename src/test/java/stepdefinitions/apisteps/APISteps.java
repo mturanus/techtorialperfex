@@ -52,5 +52,16 @@ public class APISteps {
         List<String> expectedCompanies = new ArrayList<>(companies);
         Collections.sort(expectedCompanies);
         Assert.assertEquals(companies,expectedCompanies);
-    }
+
+} @Given("user has {string} and {string}")
+public void user_has_and(String baseURI, String endpoint) {
+    RestAssured.baseURI=baseURI;
+    RestAssured.basePath=endpoint;
+
 }
+
+@Then("verify response {string} is {string}")
+public void verify_response_is(String jsonPath, String expectedValue) {
+    String actualValue = response.jsonPath().getString(jsonPath);
+    Assert.assertEquals(actualValue, expectedValue);
+}}
