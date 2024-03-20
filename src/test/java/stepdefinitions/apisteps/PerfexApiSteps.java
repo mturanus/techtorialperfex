@@ -3,12 +3,17 @@ package stepdefinitions.apisteps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.config.EncoderConfig;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.*;
+import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
 import utils.ConfigReader;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.is;
@@ -16,6 +21,7 @@ import static org.hamcrest.Matchers.is;
 public class PerfexApiSteps {
 
     Response response;
+    Map<String, String> data;
 
     @Given("I have base url {string} and endpoint {string}")
     public void i_have_base_url_and_endpoint(String baseURI, String endpoint) {
@@ -24,6 +30,20 @@ public class PerfexApiSteps {
         RestAssured.basePath=endpoint;
 
     }
+
+
+    @Given("the request has {string} data")
+    public void the_request_has_data(String dataName) {
+        switch(dataName){
+            case "proposals":
+                data=new TestData().getProposalData();
+                break;
+            case "proposalsNegative":
+                data=new TestData().getProposalNegData();
+                break;
+        }
+    }
+
     @When("the user send the {string} request")
     public void the_user_send_the_request(String requestType) {
 
@@ -31,6 +51,24 @@ public class PerfexApiSteps {
             case "GET":
                 response=given().header("authtoken", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWlrZS1hcGkiLCJuYW1lIjoiTWlrZSBUZWNodG9yaWFsIiwiQVBJX1RJTUUiOjE3MTAwNjE0ODB9.16BVdzs3Ssxf3yurelqxe2v754sTkiUPJAzFYibVHoc").when().get();
                 System.out.println(response.toString());
+                break;
+            case "POST":
+                RestAssured.config = RestAssured.config().encoderConfig(EncoderConfig.encoderConfig().encodeContentTypeAs("multipart/form-data", ContentType.TEXT));
+
+                RequestSpecification specification =given()
+                        .header("authtoken", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWlrZS1hcGkiLCJuYW1lIjoiTWlrZSBUZWNodG9yaWFsIiwiQVBJX1RJTUUiOjE3MTAwNjE0ODB9.16BVdzs3Ssxf3yurelqxe2v754sTkiUPJAzFYibVHoc")
+                        .contentType("multipart/form-data");
+
+                for(Map.Entry<String, String> entry: data.entrySet()){
+
+                    specification.multiPart(entry.getKey(), entry.getValue());
+
+                }
+
+                response=specification.when().post();
+
+                //System.out.println(response.prettyPrint());
+
                 break;
         }
 
