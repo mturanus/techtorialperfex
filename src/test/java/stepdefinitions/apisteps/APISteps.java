@@ -4,10 +4,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
+import io.restassured.config.Config;
+import io.restassured.config.EncoderConfig;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
 import utils.ConfigReader;
 
+import java.io.ObjectInputFilter;
+//import java.lang.runtime.SwitchBootstraps;
 import java.util.*;
 
 import static io.restassured.RestAssured.given;
@@ -15,6 +21,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class APISteps {
     Response response;
+    Map <String,String> data;
 
     @Given("User has baseurl and endpoint")
     public void user_has_baseurl_and_endpoint() {
@@ -28,6 +35,19 @@ public class APISteps {
             case "GET":
                 response = RestAssured.given().header("authtoken", ConfigReader.readProperty("token"))
                         .when().get();
+
+                break;
+            case "POST":
+                RestAssured.config = RestAssured.config().encoderConfig(EncoderConfig.encoderConfig()
+                        .encodeContentTypeAs("multipart/form-data", ContentType.TEXT ));
+                RequestSpecification specification = given().header("authtoken", ConfigReader.readProperty("token"))
+                        .contentType("multipart/form-data");
+
+                for(Map.Entry<String,String> entry : data.entrySet()){
+                    specification.multiPart(entry.getKey(),entry.getValue());
+
+                }
+                response=specification.when().post();
                 break;
         }
     }
@@ -108,4 +128,16 @@ public class APISteps {
         String actualCompany = response.jsonPath().getString("project_data.client_data.company");
         Assert.assertEquals(company, actualCompany);
     }
+
+    @Given("Request has {string} data")
+    public void request_has_data(String dataName) {
+        switch(dataName){
+            case "proposals":
+                data=TestData.getProposalData();
+                        break;
+
+        }
+
+    }
+
 }
